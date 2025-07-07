@@ -1,0 +1,9 @@
+__pycache__/
+
+# Logs
+logs
+*.log
+
+# dotenv environment variables file
+.env
+.env.test
