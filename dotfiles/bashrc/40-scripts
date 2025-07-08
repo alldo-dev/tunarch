@@ -16,12 +16,12 @@ iso2sd() {
 }
 
 # GIT LAZY PUSH WITH MESSAGE
-glcwm() {
+glpwm() {
     if [ $# -ne 1]; then
         echo "Usage: glpwm <message>"
         echo "Example: glpwm 'this is a commit'"
     else
-        git add . && git commit -m $1 && git push
+        git add . && git commit -m "${1}" && git push
     fi
 }
 
