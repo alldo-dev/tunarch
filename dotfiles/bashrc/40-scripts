@@ -19,7 +19,7 @@ iso2sd() {
 glcwm() {
     if [ $# -ne 1]; then
         echo "Usage: glpwm <message>"
-        echo "Example: glpwm "this is a commit"
+        echo "Example: glpwm 'this is a commit'"
     else
         git add . && git commit -m $1 && git push
     fi
