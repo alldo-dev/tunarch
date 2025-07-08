@@ -1,0 +1,13 @@
+#------------------------------------------------------------------------------
+# ALIASES
+#------------------------------------------------------------------------------
+
+# GENERAL
+alias c='clear'
+alias ls='ls -la'
+
+# GIT
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit -m"
+alias gp="git push"
