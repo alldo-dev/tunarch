@@ -102,7 +102,7 @@ fi
 
 
 # Install everything
-for f in "${download_dir}/install/*.sh"; do
+for f in $download_dir/install/*.sh; do
     _logColor "$cyan" "$log_header" "running the installed for $f"
     source "$f"
 done
