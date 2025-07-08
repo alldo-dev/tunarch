@@ -1,5 +1,7 @@
 # Copy the config files
 cp -R ~/.acr/dotfiles/* ~/.config/
 
-# Use default bashrc from Omarchy
-echo "source ~/.acr/dotfiles/bashrc" >~/.bashrc
+for f in ~/.acr/dotfiles/bashrc/*; do 
+    echo -e "\nsourcing: ${f}"
+    source $f
+done
