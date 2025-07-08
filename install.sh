@@ -73,38 +73,31 @@ _checkCommandExists() {
 #------------------------------------------------------------------------------
 
 echo -e "\n$ascii_art\n"
-# echo -e "\n[${log_header}] checking if git is already installed..."
-_logColor "$magenta" "$log_header" "checking if git is already installed..."
 
-# check if git is installed or install if no install
-# pacman -Q git &>/dev/null || sudo pacman -Sy --noconfirm --needed git
-
+_logColor "$cyan" "$log_header" "checking if git is already installed..."
 if [[ $(_isInstalled "git") == 0 ]]; then
-    echo -e "\n[${log_header}] git is already installed."
+    _logColor "$cyan" "$log_header" "git is already installed"
     continue
 else
-    echo -e "\n[${log_header}] git is not installed, installing..."
+    _logColor "$cyan" "$log_header" "git is not installed, installing..."
     sudo pacman -Sy --noconfirm --needed git
 fi
 
+_logColor "$cyan" "$log_header" "removing ${download_dir}"
+rm -rf $download_dir
 
-# echo -e "\n[${log_header}] attempting to remove ${download_dir}"
-# rm -rf $download_dir
-#
-#
-# echo -e "\n[${log_header}] cloning ${repo} to ${download_dir}"
-# git clone "https://github.com/${repo}.git" "${download_dir}" >/dev/null
-#
-# echo -e "\n[${log_header}] Installation starting..."
-#
-# # Exit immediately if a command exits with a non-zero status
-#
-# # Create download_dir if not exists
-# if [ ! -d $download_dir ]; then
-#     echo -e "\n[${log_header}] creating directory in ${download_dir}"
-#     mkdir -p $download_dir
-# else
-#     echo -e "\n[${log_header}] directory ${download_dir} exists, continuing..."
-# fi
-#
+
+_logColor "$cyan" "$log_header" "cloning ${repo} to ${download_dir}"
+git clone "https://github.com/${repo}.git" "${download_dir}" >/dev/null
+
+_logColor "$cyan" "$log_header" "Installation starting..."
+
+# Create download_dir if not exists
+if [ ! -d $download_dir ]; then
+    _logColor "$cyan" "$log_header" "creating directory in ${download_dir}"
+    mkdir -p $download_dir
+else
+    _logColor "$cyan" "$log_header" "directory ${download_dir} exists, continuing..."
+fi
+
 
