@@ -22,4 +22,6 @@ glcwm() {
         echo "Example: glpwm "this is a commit"
     else
         git add . && git commit -m $1 && git push
+    fi
 }
+
