@@ -67,28 +67,17 @@ _checkCommandExists() {
 #------------------------------------------------------------------------------
 # Script Start
 #------------------------------------------------------------------------------
-echo -e "${MAGENTA}"
-echo -e "\n$ascii_art\n"
-echo -e "${WHITE}"
+echo -e "\n$MAGENTA$ascii_art$WHITE\n"
 
 while true; do
-    read -p "DO YOU WANT TO START THE INSTALLATION NOW? (Yy/Nn): " yn
+    read -p "DO YOU WANT TO START THE INSTALLATION NOW? (y/N): " yn
     case $yn in
-        [Yy]*)
-            echo ":: Installation started."
-            echo
-            break
-            ;;
-        [Nn]*)
-            echo ":: Installation canceled"
-            exit
-            break
-            ;;
-        *)
-            echo ":: Please answer yes or no."
-            ;;
+        [Yy]* ) echo "STARTING INSTALLATION"; break;;
+        [Nn]* ) echo "INSTALLATION CANCELLED";exit;;
+        * ) echo "Please answer yes or no.";;
     esac
 done
+
 
 # GIT
 _logColor "$cyan" "$log_header" "checking if git is already installed..."
