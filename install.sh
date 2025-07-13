@@ -88,7 +88,6 @@ done
 _logColor "$cyan" "$log_header" "checking if git is already installed..."
 if [[ $(_isInstalled "git") == 0 ]]; then
     _logColor "$cyan" "$log_header" "git is already installed"
-    continue
 else
     _logColor "$cyan" "$log_header" "git is not installed, installing..."
     sudo pacman -Sy --noconfirm --needed git
@@ -116,7 +115,7 @@ fi
 
 # INSTALL FROM INSTALL DIR
 for f in $download_dir/install/*.sh; do
-    _logColor "$cyan" "$log_header" "running installation for $f"
+    _logColor "$cyan" "$log_header" "running installation for $green$f$white\n"
     source "$f"
 done
 
