@@ -1,3 +1,10 @@
+#!/bin/sh
+
+source ~/.acr/utils.sh
+_logColor "$cyan" "$log_header" "The Following fonts will be installed"
+echo -e "ttf-font-awesome"
+echo -e "ttf-firacode-nerd"
+
 #-------------------------------------------------------------------------------
 # FONTS INSTALLATION
 #-------------------------------------------------------------------------------
