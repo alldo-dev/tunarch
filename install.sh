@@ -67,7 +67,12 @@ _checkCommandExists() {
 #------------------------------------------------------------------------------
 # Script Start
 #------------------------------------------------------------------------------
-echo -e "\n$MAGENTA$ascii_art$WHITE\n"
+echo -e "\n$ascii_art\n"
+echo -e "Thank you for using aColdRice(ACR) - ArchLinux"
+echo -e "In order to set-up the customized desktop environment"
+echo -e "we need to make sure specific software is installed"
+echo -e "the installer needs super-user (sudo) permission to"
+echo -e "install it.\n"
 
 while true; do
     read -p "DO YOU WANT TO START THE INSTALLATION NOW? (y/N): " yn

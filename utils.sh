@@ -35,7 +35,7 @@ _logColor() {
     header_color="$1"
     header="$2"
     header_msg="$3"
-    echo -e "\n${header_color}[${header}]${white}${header_msg}"
+    echo -e "${header_color}[${header}]${white}${header_msg}"
 }
 
 # Check if package is installed

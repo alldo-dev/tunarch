@@ -1,3 +1,8 @@
+#!/bin/sh
+
+source ~/.acr/utils.sh
+_logColor "$cyan" "$log_header" "making sure yay is installed..."
+
 sudo pacman -S --needed --noconfirm base-devel
 
 if ! command -v yay &>/dev/null; then
