@@ -10,6 +10,7 @@ window#waybar {
     background: transparent;
     border: 2px solid #fcfcce;
     border-radius: 4px;
+    color: #fcfcce;
 }
 
 tooltip {
@@ -60,8 +61,8 @@ tooltip label {
 
 #workspaces button.urgent {
     background-color: #cccc7c;
-	color: #000000;
-	border: 2px solid #cccc7c;
+    color: #000000;
+    border: 2px solid #cccc7c;
 }
 
 #clock {
