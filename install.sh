@@ -35,33 +35,57 @@ white="\u001b[37m"
 #------------------------------------------------------------------------------
 
 _logColor() {
-    header_color="$1"
-    header="$2"
-    header_msg="$3"
-    echo -e "\n${header_color}[${header}]${white}${header_msg}"
+    if [ $# -ne 3 ]; then
+        echo "Usage: _logColor <header_color> <header> <header_message>"
+        echo "Example: _logColor '\u001b[32m' '[_logColor]' 'my message'"
+    else
+        header_color="$1"
+        header="$2"
+        header_msg="$3"
+        echo -e "${header_color}[${header}]${white}${header_msg}"
+    fi
 }
 
 # Check if package is installed
 _isInstalled() {
-    package="$1"
-    check="$(sudo pacman -Qs --color always "${package}" | grep "local" | grep "${package} ")"
-    if [ -n "${check}" ]; then
-        echo 0 #'0' means 'true' in Bash
-        return #true
+    if [ $# -ne 2 ]; then
+        echo "Usage: _isInstalled <package manager> <package>"
+        echo "Example: _isInstalled 'pacman' 'grep'" 
+    else
+	case $1 in
+	    pacman)
+	        package="$2"
+                check="$(sudo pacman -Qs --color always "${package}" | grep "local" | grep "${package} ")"
+                if [ -n "${check}" ]; then
+                    echo 0 #'0' means 'true' in Bash
+                    return #true
+                fi
+                echo 1 #'1' means 'false' in Bash
+                return #false
+	        ;;
+	    yay)
+		;;
+	    *)
+		;;
+	esac
     fi
-    echo 1 #'1' means 'false' in Bash
-    return #false
 }
 
 # Check if command exists
 _checkCommandExists() {
-    package="$1"
-    if ! command -v $package >/dev/null; then
-        return 1
-    else
+    if [ $# -ne 1 ]; then
+        echo "Usage: _checkCommandExists <command>"
+        echo "Example: _checkCommandExists 'grep'" 
+        return 2
+    fi
+
+    if command -v "$1" >/dev/null 2>&1; then
         return 0
+    else
+        return 1
     fi
 }
+
 
 
 #------------------------------------------------------------------------------
@@ -86,7 +110,7 @@ done
 
 # GIT
 _logColor "$cyan" "$log_header" "checking if git is already installed..."
-if [[ $(_isInstalled "git") == 0 ]]; then
+if [[ $(_isInstalled "pacman" "git") == 0 ]]; then
     _logColor "$cyan" "$log_header" "git is already installed"
 else
     _logColor "$cyan" "$log_header" "git is not installed, installing..."
@@ -119,3 +143,10 @@ for f in $download_dir/install/*.sh; do
     source "$f"
 done
 
+_logColor "$yellow" "$log_header" "checking if hyprctl exists"
+if _checkCommandExists "hyprctl"; then
+    _logColor "$green" "$log_header" "reloading hyprland..."
+    hyprctl reload
+else
+    _logColor "$red" "$log_header" "cannot find the hyprctl command"
+fi
