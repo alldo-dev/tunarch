@@ -22,9 +22,9 @@ yay -S --noconfirm --needed \
   xdg-desktop-portal-hyprland \
   hyprpolkitagent \
   qt5-wayland \
-  qt6-wayland
+  qt6-wayland \
   xdg-desktop-portal-gtk \
-  hyprland-qtutils \
+  hyprland-qtutils
 
 # Start Hyprland on first session
 echo "[[ -z \$DISPLAY && \$(tty) == /dev/tty1 ]] && exec Hyprland" >~/.bash_profile
