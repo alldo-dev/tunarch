@@ -25,3 +25,14 @@ glpwm() {
     fi
 }
 
+# GIT LAZY PUSH WITH MESSAGE
+hl() {
+    if [ $# -ne 1 ]; then
+        echo "History Lookup - search in history for word"
+        echo "Usage: hl <search word>"
+        echo "Example: hl 'glp'"
+    else
+        history | grep "${1}"
+    fi
+}
+

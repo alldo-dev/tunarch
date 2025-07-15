@@ -5,6 +5,7 @@
 # GENERAL
 alias c='clear'
 alias ls='ls -la --color=auto'
+alias ll='ls -la --color=auto'
 
 # GIT
 alias gs="git status"

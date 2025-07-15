@@ -7,5 +7,3 @@ logs
 # dotenv environment variables file
 .env
 .env.test
-
-test.sh
