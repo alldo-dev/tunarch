@@ -18,6 +18,7 @@ rice="acr"
 log_header="${rice} installer"
 repo="alldo-dev/acr"
 download_dir="$HOME/.acr"
+acr_scripts_dir="$HOME/.acr/dotfiles/acr/scripts"
 
 #terminal colors
 black="\u001b[30m"
@@ -142,6 +143,13 @@ for f in $download_dir/install/*.sh; do
     _logColor "$cyan" "$log_header" "running installation for $f"
     source "$f"
 done
+
+# ENABLING ACR SCRIPT HELPERS
+for s in $acr_scripts_dir/*.sh; do
+    _logColor "$cyan" "$log_header" "enabling utility script $f"
+    sudo chmod +x "$f"
+done
+
 
 _logColor "$yellow" "$log_header" "checking if hyprctl exists"
 if _checkCommandExists "hyprctl"; then
