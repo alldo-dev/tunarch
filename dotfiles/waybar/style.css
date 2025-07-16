@@ -83,10 +83,6 @@ tooltip label {
     color: #fcfcce;
 }
 
-#network {
-	min-width: 100px;
-}
-
 #cpu,
 #memory,
 #battery,
