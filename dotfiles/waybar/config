@@ -37,7 +37,7 @@
     },
 
     "hyprland/window": {
-	"format": "{title}",
+	"format": "<span font-size='x-small'>{title}</span>",
 	"rewrite": {
 	  "(.*) — Mozilla Firefox": "🌎 $1",
           "(.*) - Kitty": "> [$1]"
