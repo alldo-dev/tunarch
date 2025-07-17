@@ -146,8 +146,8 @@ done
 
 # ENABLING ACR SCRIPT HELPERS
 for s in $acr_scripts_dir/*.sh; do
-    _logColor "$cyan" "$log_header" "enabling utility script $f"
-    sudo chmod +x "$f"
+    _logColor "$cyan" "$log_header" "enabling utility script $s"
+    sudo chmod +x $s
 done
 
 
