@@ -26,16 +26,31 @@ tooltip label {
 
 #clock,
 #tray,
-#cpu,
-#memory,
+/* #cpu, */
+/* #memory, */
 #battery,
 #network,
 #pulseaudio,
-#language {
+#language,
+#backlight,
+/* #temperature { */
+#mem{
+
     margin: 6px 6px 6px 0px;
     padding: 2px 8px;
-	border-radius: 4px;
+    border-radius: 4px;
+    background-color: #101010;
+    border: 2px solid #fcfcce;
+    color: #fcfcce;
+
 }
+
+#cpu,
+#memory,
+#temperature {
+    margin-left: 10px;
+}
+
 
 #workspaces {
     margin: 6px 0px 6px 6px;
@@ -69,18 +84,6 @@ tooltip label {
     background-color: #fcfcce;
     border: 2px solid #120F19;
     color: #000000;
-}
-
-#cpu,
-#memory,
-#network,
-#pulseaudio,
-#battery,
-#tray,
-#language {
-    background-color: #101010;
-    border: 2px solid #fcfcce;
-    color: #fcfcce;
 }
 
 #cpu,

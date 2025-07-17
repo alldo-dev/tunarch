@@ -7,11 +7,13 @@ _logColor "$magenta" "utilities" "rofi | application laucher"
 _logColor "$magenta" "utilities" "waybar | wayland status bar"
 _logColor "$magenta" "utilities" "wl-clipboard | cli copy/paste utils for wayland"
 _logColor "$magenta" "utilities" "cliphist | wayland clipboard manager with multimedia support"
+_logColor "$magenta" "utilities" "pavucontrol| audio volume control"
 
 
 yay -S --noconfirm --needed \
   rofi \
   waybar \
   wl-clipboard \
-  cliphist
+  cliphist \
+  pavucontrol
 
