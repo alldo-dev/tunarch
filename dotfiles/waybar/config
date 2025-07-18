@@ -49,7 +49,8 @@
     },
 
     "hyprland/window": {
-	"format": "<span font-size='x-small'>{title}</span>",
+	"format": "<span font-size='medium'>{title}</span>",
+	"max-length": 30,
 	"rewrite": {
 	  "(.*) — Mozilla Firefox": "🌎 $1",
           "(.*) - Kitty": "> [$1]"
@@ -128,8 +129,8 @@
         // "interface": "wlp2s0", // (Optional) To force the use of this interface
         // "format-wifi": "{essid} ({signalStrength}%)  ",
         "format-wifi": "({signalStrength}%)  ",
-        // "format-ethernet": "{ifname}: {ipaddr}/{cidr}  ",
-        "format-ethernet": " ",
+        // "format-ethernet": "{ifname}: {ipaddr}/{cidr}  ",
+        "format-ethernet": " ",
         "format-disconnected": "Disconnected ⚠ ",
 	"tooltip": true,
 	"tooltip-format": "{essid}",
