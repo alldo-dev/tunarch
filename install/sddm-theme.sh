@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sddm_theme_name="sddm-sugar-candy"
+sddm_theme_name="Sugar-Candy"
 
 source ~/.acr/utils.sh
 
