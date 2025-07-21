@@ -15,6 +15,7 @@ rice="acr"
 log_header="${rice} installer"
 repo="alldo-dev/acr"
 download_dir="$HOME/.acr"
+acr_cacheDir="$HOME/.cache/acr" 
 
 #terminal colors
 black="\u001b[30m"
@@ -39,7 +40,7 @@ _logColor() {
         header_color="$1"
         header="$2"
         header_msg="$3"
-        echo -e "${header_color}[${header}]${white}${header_msg}"
+        echo -e "${header_color}[${header}] ${white}${header_msg}"
     fi
 }
 
@@ -82,4 +83,14 @@ _checkCommandExists() {
     else
         return 1
     fi
+}
+
+# Creates cache folder
+_createCacheDir(){
+    if [ ! -d $acr_cacheDir ]; then
+	mkdir -p $acr_cacheDir
+	notify-send "Created acr cache directory at $acr_cacheDir"
+	echo $acr_cacheDir
+    fi
+    echo $acr_cacheDir
 }

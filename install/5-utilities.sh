@@ -8,6 +8,8 @@ _logColor "$magenta" "utilities" "waybar | wayland status bar"
 _logColor "$magenta" "utilities" "wl-clipboard | cli copy/paste utils for wayland"
 _logColor "$magenta" "utilities" "cliphist | wayland clipboard manager with multimedia support"
 _logColor "$magenta" "utilities" "pavucontrol| audio volume control"
+_logColor "$magenta" "utilities" "libnotify| notification library"
+_logColor "$magenta" "utilities" "inotify-tools | interface for inotify used by various other tools"
 
 
 yay -S --noconfirm --needed \
@@ -15,5 +17,6 @@ yay -S --noconfirm --needed \
   waybar \
   wl-clipboard \
   cliphist \
-  pavucontrol
-
+  pavucontrol \
+  libnotify \
+  inotify-tools
