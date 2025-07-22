@@ -36,4 +36,4 @@ _logColor "$green" "$log_header" "sddm config updated at /etc/sddm.conf.d/sddm.c
 
 sudo cp $wallpaper $sddm_backgrounds_dir/wallpaper.$extension
 
-sudo sed -i "s|^Background=\".*\"|Background=\"wallpaper.$extension\"|" /usr/share/sddm/themes/$sddm_theme/theme.conf
+sudo sed -i "s|^Background=\".*\"|Background=\"Backgrounds/wallpaper.$extension\"|" /usr/share/sddm/themes/$sddm_theme/theme.conf
