@@ -43,4 +43,4 @@ echo $wallpaper > "$cacheDir/current_wallpaper"
 _logColor "$green" "log_header" "changing wallpaper to $wallpaper"
 notify-send "changing wallpaper to $wallpaper"
 
-$HOME/.acr/dotfiles/acr/scripts/sddm-wallpaper.sh
+sudo /home/$(whoami)/.acr/dotfiles/acr/scripts/sddm-wallpaper.sh $(whoami)

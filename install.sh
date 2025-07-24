@@ -158,3 +158,19 @@ if _checkCommandExists "hyprctl"; then
 else
     _logColor "$red" "$log_header" "cannot find the hyprctl command"
 fi
+
+# add the change sddm background script to the sudoers file
+_logColor "$yellow" "$log_header" "adding specific scripts to sudoers files"
+
+username=$(whoami)
+custom_sudoers="/etc/sudoers.d/acr-sddm"
+sudoers_entry="$username ALL=(ALL) NOPASSWD: /home/$username/.acr/dotfiles/acr/scripts/sddm-wallpaper.sh"
+
+if [ ! -f "$custom_sudoers" ] || ! sudo grep -Fxq "$sudoers_entry" "$custom_sudoers"; then
+    echo "Adding sudoers rule to $custom_sudoers..."
+    echo "$sudoers_entry" | sudo tee "$custom_sudoers" > /dev/null
+    sudo chmod 0440 "$custom_sudoers"
+    echo "Custom sudoers rule added."
+else
+    echo "Custom sudoers rule already exists."
+fi
