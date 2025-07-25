@@ -25,11 +25,11 @@ ASCII_ART=$(cat <<EOF
 EOF
 )
 
-RICE="acr"
+RICE="tunarch"
 LOG_HEADER="${rice} installer"
-REPO="alldo-dev/acr"
+REPO="alldo-dev/tunarch"
 USER=$whoami
-DOWNLOAD_DIR="/home/$USER/.local/share/acrarch"
+DOWNLOAD_DIR="/home/$USER/.local/share/$RICE"
 ACR_SCRIPTS_DIR="$DOWNLOAD_DIR/dotfiles/acrarch/scripts"
 
 #terminal colors
@@ -99,11 +99,18 @@ _checkCommandExists() {
     fi
 }
 
+# TRAP helper function
+catch_errors() {
+    _logColor "$RED" "$LOG_HEADER" "SOMETHING WENT WRONG WHILE INSTALLING TUNARCHY"
+    _logColor "$RED" "" "You can retry the installation by running 'sh ~/.local/share/tunarchy/install.sh'"
+}
 
 
 #------------------------------------------------------------------------------
 # Script Start
 #------------------------------------------------------------------------------
+trap catch_errors ERR
+
 echo -e "\n$ASCII_ART\n"
 echo -e "Thank you for using aColdRice(ACR) - ArchLinux"
 echo -e "In order to set-up the customized desktop environment"
@@ -122,67 +129,67 @@ done
 
 
 # GIT
-_logColor "$cyan" "$log_header" "checking if git is already installed..."
+_logColor "$CYAN" "$LOG_HEADER" "checking if git is already installed..."
 if [[ $(_isInstalled "pacman" "git") == 0 ]]; then
-    _logColor "$cyan" "$log_header" "git is already installed"
+    _logColor "$CYAN" "$LOG_HEADER" "git is already installed"
 else
-    _logColor "$cyan" "$log_header" "git is not installed, installing..."
+    _logColor "$CYAN" "$LOG_HEADER" "git is not installed, installing..."
     sudo pacman -Sy --noconfirm --needed git
 fi
 
 # REMOVE EXISTING DIR
-_logColor "$cyan" "$log_header" "removing ${download_dir}"
-rm -rf $download_dir
+_logColor "$CYAN" "$LOG_HEADER" "removing ${DOWNLOAD_DIR}"
+rm -rf $DOWNLOAD_DIR
 
 # CLONE REPO
-_logColor "$cyan" "$log_header" "cloning ${repo} to ${download_dir}"
-git clone "https://github.com/${repo}.git" "${download_dir}" >/dev/null
+_logColor "$CYAN" "$LOG_HEADER" "cloning ${REPO} to ${DOWNLOAD_DIR}"
+git clone "https://github.com/${REPO}.git" "${DOWNLOAD_DIR}" >/dev/null
 
 
-_logColor "$cyan" "$log_header" "Installation starting..."
-
-# CREATE DOWNLOAD_DIR IF NO EXISTS
-if [ ! -d $download_dir ]; then
-    _logColor "$cyan" "$log_header" "creating directory in ${download_dir}"
-    mkdir -p $download_dir
-else
-    _logColor "$cyan" "$log_header" "directory ${download_dir} exists, continuing..."
-fi
-
-
-# INSTALL FROM INSTALL DIR
-for f in $download_dir/install/*.sh; do
-    _logColor "$cyan" "$log_header" "running installation for $f"
-    source "$f"
-done
-
-# ENABLING ACR SCRIPT HELPERS
-for s in $acr_scripts_dir/*.sh; do
-    _logColor "$cyan" "$log_header" "enabling utility script $s"
-    sudo chmod +x $s
-done
-
-
-_logColor "$yellow" "$log_header" "checking if hyprctl exists"
-if _checkCommandExists "hyprctl"; then
-    _logColor "$green" "$log_header" "reloading hyprland..."
-    hyprctl reload
-else
-    _logColor "$red" "$log_header" "cannot find the hyprctl command"
-fi
-
-# add the change sddm background script to the sudoers file
-_logColor "$yellow" "$log_header" "adding specific scripts to sudoers files"
-
-username=$(whoami)
-custom_sudoers="/etc/sudoers.d/acr-sddm"
-sudoers_entry="$username ALL=(ALL) NOPASSWD: /home/$username/.acr/dotfiles/acr/scripts/sddm-wallpaper.sh"
-
-if [ ! -f "$custom_sudoers" ] || ! sudo grep -Fxq "$sudoers_entry" "$custom_sudoers"; then
-    echo "Adding sudoers rule to $custom_sudoers..."
-    echo "$sudoers_entry" | sudo tee "$custom_sudoers" > /dev/null
-    sudo chmod 0440 "$custom_sudoers"
-    echo "Custom sudoers rule added."
-else
-    echo "Custom sudoers rule already exists."
-fi
+# _logColor "$CYAN" "$LOG_HEADER" "Installation starting..."
+#
+# # CREATE DOWNLOAD_DIR IF NO EXISTS
+# if [ ! -d $DOWNLOAD_DIR ]; then
+#     _logColor "$CYAN" "$LOG_HEADER" "creating directory in ${DOWNLOAD_DIR}"
+#     mkdir -p $DOWNLOAD_DIR
+# Else
+#     _logColor "$CYAN" "$LOG_HEADER" "directory ${DOWNLOAD_DIR} exists, continuing..."
+# fi
+#
+#
+# # INSTALL FROM INSTALL DIR
+# for f in $DOWNLOAD_DIR/install/*.sh; do
+#     _logColor "$CYAN" "$LOG_HEADER" "running installation for $f"
+#     source "$f"
+# done
+#
+# # ENABLING ACR SCRIPT HELPERS
+# for s in $ACR_SCRIPTS_DIR/*.sh; do
+#     _logColor "$CYAN" "$LOG_HEADER" "enabling utility script $s"
+#     sudo chmod +x $s
+# done
+#
+#
+# _logColor "$yellow" "$log_header" "checking if hyprctl exists"
+# if _checkCommandExists "hyprctl"; then
+#     _logColor "$GREEN" "$LOG_HEADER" "reloading hyprland..."
+#     hyprctl reload
+# else
+#     _logColor "$RED" "$LOG_HEADER" "cannot find the hyprctl command"
+# fi
+#
+# # add the change sddm background script to the sudoers file
+# _logColor "$YELLOW" "$LOG_HEADER" "adding specific scripts to sudoers files"
+#
+# USERNAME=$(whoami)
+# CUSTOM_SUDOERS="/etc/sudoers.d/acr-sddm"
+# SUDOERS_ENTRY="$USERNAME aLL=(ALL) NOPASSWD: /home/$USERNAME/.acr/dotfiles/acr/scripts/sddm-wallpaper.sh"
+#
+# if [ ! -f "$CUSTOM_SUDOERS" ] || ! sudo grep -Fxq "$SUDOERS_ENTRY" "$CUSTOM_SUDOERS"; then
+#     echo "Adding sudoers rule to $CUSTOM_SUDOERS..."
+#     echo "$SUDOERS_ENTRY" | sudo tee "$CUSTOM_SUDOERS" > /dev/null
+#     sudo chmod 0440 "$CUSTOM_SUDOERS"
+#     echo "Custom sudoers rule added."
+# else
+#     echo "Custom sudoers rule already exists."
+# fi
