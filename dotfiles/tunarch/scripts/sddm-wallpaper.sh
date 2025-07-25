@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ $# -ne 1 ]; then
-    echo "Usage: sddm-wallpaper.sh <user>"
+    echo "Usage: sddm-wallpaper.sh <FOR_USER>"
     echo "Example: 'sh sddm-wallpaper.sh myusername'"
     exit 1 # error
 fi
@@ -36,7 +36,7 @@ _logColor() {
 }
 
 # Creates cache folder
-CACHE_DIR="/home/$(whoami)/.cache/tunarch" 
+CACHE_DIR="/home/$FOR_USER/.cache/tunarch" 
 _createCacheDir(){
     if [ ! -d $CACHE_DIR]; then
 	mkdir -p $CACHE_DIR
