@@ -6,7 +6,7 @@ if [ $# -ne 1 ]; then
     exit 1 # error
 fi
 
-USER=$1
+FOR_USER=$1
 
 #terminal colors
 BLACK="\u001b[30m"
@@ -58,8 +58,8 @@ EXTENSION="${wallpaper##*.}"
 SDDM_THEME=Sugar-Candy
 SDDM_BACKGROUNDS_DIR="/usr/share/sddm/themes/$SDDM_THEME/Backgrounds"
 
-if [ ! -f "/home/$USER/.local/share/tunarch/sddm/theme.conf" ]; then
-    sddm_theme_conf="/home/$USER/.local/share/tunarch/sddm/theme.conf"
+if [ ! -f "/home/$FOR_USER/.local/share/tunarch/sddm/theme.conf" ]; then
+    sddm_theme_conf="/home/$FOR_USER/.local/share/tunarch/sddm/theme.conf"
 fi
 
 if [ ! -f "$WALLPAPER" ]; then
@@ -76,7 +76,7 @@ if [ ! -d /etc/sddm.conf.d/ ]; then
     _logColor "$GREEN" "$LOG_HEADER" "Directory /etc/sddm.conf.d created"
 fi
 
-cp /home/$USER/.local/share/tunarch/sddm/sddm.conf /etc/sddm.conf.d/
+cp /home/$FOR_USER/.local/share/tunarch/sddm/sddm.conf /etc/sddm.conf.d/
 _logColor "$GREEN" "$LOG_HEADER" "sddm config updated at /etc/sddm.conf.d/sddm.conf"
 
 cp $WALLPAPER $SDDM_BACKGROUNDS_DIR/wallpaper.$EXTENSION
