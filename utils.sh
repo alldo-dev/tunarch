@@ -79,7 +79,7 @@ _checkCommandExists() {
 
 # Creates cache folder
 _createCacheDir(){
-    if [ ! -d $CACHE_DIR]; then
+    if [ ! -d $CACHE_DIR ]; then
 	mkdir -p $CACHE_DIR
 	notify-send "Created tunarch cache directory at $CACHE_DIR"
 	echo $CACHE_DIR
