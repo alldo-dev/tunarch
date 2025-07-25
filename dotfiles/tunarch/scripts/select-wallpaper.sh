@@ -1,8 +1,15 @@
 #!/bin/bash
 
-source $HOME/.acr/utils.sh
+UTILS_FILE=/home/$(whoami)/.local/share/tunarch/utils.sh 
 
-WALLPAPER_DIR="$HOME/wallpapers"
+if [ ! -f "$UTILS_FILE" ]; then
+    echo -e "No utilities file (utils.sh) for tunarchy found under /home/$(whoami)/.local/share/"
+    exit 1
+fi
+
+source "$UTILS_FILE" 
+
+WALLPAPER_DIR="/home/$(whoami)/wallpapers"
 
 
 # Make sure WALLPAPER_DIR exists
@@ -26,6 +33,6 @@ SELECTED=$( find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -
 # If the user made a selection, call the change-wallpaper script
 if [[ -n "$SELECTED" ]]; then
     echo $SELECTED
-    $HOME/.acr/dotfiles/acr/scripts/change-wallpaper.sh "$WALLPAPER_DIR/$SELECTED"
+    $RICE_DIR/dotfiles/$RICE/scripts/change-wallpaper.sh "$WALLPAPER_DIR/$SELECTED"
 fi
 

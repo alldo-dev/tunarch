@@ -30,7 +30,7 @@ LOG_HEADER="${RICE} installer"
 REPO="alldo-dev/tunarch"
 USER="$(whoami)"
 DOWNLOAD_DIR="/home/$USER/.local/share/$RICE"
-ACR_SCRIPTS_DIR="$DOWNLOAD_DIR/dotfiles/acrarch/scripts"
+SCRIPTS_DIR="$DOWNLOAD_DIR/dotfiles/$RICE/scripts"
 
 #terminal colors
 BLACK="\u001b[30m"
@@ -163,13 +163,13 @@ for f in $DOWNLOAD_DIR/install/*.sh; do
     source "$f"
 done
 
-# # ENABLING ACR SCRIPT HELPERS
-# for s in $SCRIPTS_DIR/*.sh; do
-#     _logColor "$CYAN" "$LOG_HEADER" "enabling utility script $s"
-#     sudo chmod +x $s
-# done
-#
-#
+# ENABLING ACR SCRIPT HELPERS
+for s in $SCRIPTS_DIR/*.sh; do
+    _logColor "$CYAN" "$LOG_HEADER" "enabling utility script $s"
+    sudo chmod +x $s
+done
+
+
 # _logColor "$yellow" "$log_header" "checking if hyprctl exists"
 # if _checkCommandExists "hyprctl"; then
 #     _logColor "$GREEN" "$LOG_HEADER" "reloading hyprland..."
