@@ -29,8 +29,8 @@ RICE="tunarch"
 LOG_HEADER="${RICE} installer"
 REPO="alldo-dev/tunarch"
 USER="$(whoami)"
-DOWNLOAD_DIR="/home/$USER/.local/share/$RICE"
-SCRIPTS_DIR="$DOWNLOAD_DIR/dotfiles/$RICE/scripts"
+RICE_DIR="/home/$USER/.local/share/$RICE"
+SCRIPTS_DIR="$RICE_DIR/dotfiles/$RICE/scripts"
 
 #terminal colors
 BLACK="\u001b[30m"
@@ -138,27 +138,27 @@ else
 fi
 
 # REMOVE EXISTING DIR
-_logColor "$CYAN" "$LOG_HEADER" "removing ${DOWNLOAD_DIR}"
-rm -rf $DOWNLOAD_DIR
+_logColor "$CYAN" "$LOG_HEADER" "removing ${RICE_DIR}"
+rm -rf $RICE_DIR
 
 # CLONE REPO
-_logColor "$CYAN" "$LOG_HEADER" "cloning ${REPO} to ${DOWNLOAD_DIR}"
-git clone "https://github.com/${REPO}.git" "${DOWNLOAD_DIR}" >/dev/null
+_logColor "$CYAN" "$LOG_HEADER" "cloning ${REPO} to ${RICE_DIR}"
+git clone "https://github.com/${REPO}.git" "${RICE_DIR}" >/dev/null
 
 
 _logColor "$CYAN" "$LOG_HEADER" "Installation starting..."
 
-# CREATE DOWNLOAD_DIR IF NO EXISTS
-if [ ! -d $DOWNLOAD_DIR ]; then
-    _logColor "$CYAN" "$LOG_HEADER" "creating directory in ${DOWNLOAD_DIR}"
-    mkdir -p $DOWNLOAD_DIR
+# CREATE RICE_DIR IF NO EXISTS
+if [ ! -d $RICE_DIR ]; then
+    _logColor "$CYAN" "$LOG_HEADER" "creating directory in ${RICE_DIR}"
+    mkdir -p $RICE_DIR
 else
-    _logColor "$CYAN" "$LOG_HEADER" "directory ${DOWNLOAD_DIR} exists, continuing..."
+    _logColor "$CYAN" "$LOG_HEADER" "directory ${RICE_DIR} exists, continuing..."
 fi
 
 
 # INSTALL FROM INSTALL DIR
-for f in $DOWNLOAD_DIR/install/*.sh; do
+for f in $RICE_DIR/install/*.sh; do
     _logColor "$CYAN" "$LOG_HEADER" "running installation for $f"
     source "$f"
 done
@@ -170,26 +170,26 @@ for s in $SCRIPTS_DIR/*.sh; do
 done
 
 
-# _logColor "$yellow" "$log_header" "checking if hyprctl exists"
-# if _checkCommandExists "hyprctl"; then
-#     _logColor "$GREEN" "$LOG_HEADER" "reloading hyprland..."
-#     hyprctl reload
-# else
-#     _logColor "$RED" "$LOG_HEADER" "cannot find the hyprctl command"
-# fi
-#
-# # add the change sddm background script to the sudoers file
-# _logColor "$YELLOW" "$LOG_HEADER" "adding specific scripts to sudoers files"
-#
-# USERNAME=$(whoami)
-# CUSTOM_SUDOERS="/etc/sudoers.d/acr-sddm"
-# SUDOERS_ENTRY="$USERNAME aLL=(ALL) NOPASSWD: /home/$USERNAME/.acr/dotfiles/acr/scripts/sddm-wallpaper.sh"
-#
-# if [ ! -f "$CUSTOM_SUDOERS" ] || ! sudo grep -Fxq "$SUDOERS_ENTRY" "$CUSTOM_SUDOERS"; then
-#     echo "Adding sudoers rule to $CUSTOM_SUDOERS..."
-#     echo "$SUDOERS_ENTRY" | sudo tee "$CUSTOM_SUDOERS" > /dev/null
-#     sudo chmod 0440 "$CUSTOM_SUDOERS"
-#     echo "Custom sudoers rule added."
-# else
-#     echo "Custom sudoers rule already exists."
-# fi
+_logColor "$YELLOW" "$LOG_HEADER" "checking if hyprctl exists"
+if _checkCommandExists "hyprctl"; then
+    _logColor "$GREEN" "$LOG_HEADER" "reloading hyprland..."
+    hyprctl reload
+else
+    _logColor "$RED" "$LOG_HEADER" "cannot find the hyprctl command"
+fi
+
+# add the change sddm background script to the sudoers file
+_logColor "$YELLOW" "$LOG_HEADER" "adding specific scripts to sudoers files"
+
+USERNAME=$(whoami)
+CUSTOM_SUDOERS="/etc/sudoers.d/tunarch-sddm"
+SUDOERS_ENTRY="$USERNAME aLL=(ALL) NOPASSWD: $RICE_DIR/dotfiles/$RICE/scripts/sddm-wallpaper.sh"
+
+if [ ! -f "$CUSTOM_SUDOERS" ] || ! sudo grep -Fxq "$SUDOERS_ENTRY" "$CUSTOM_SUDOERS"; then
+    echo "Adding sudoers rule to $CUSTOM_SUDOERS..."
+    echo "$SUDOERS_ENTRY" | sudo tee "$CUSTOM_SUDOERS" > /dev/null
+    sudo chmod 0440 "$CUSTOM_SUDOERS"
+    echo "Custom sudoers rule added."
+else
+    echo "Custom sudoers rule already exists."
+fi
