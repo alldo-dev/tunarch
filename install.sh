@@ -183,7 +183,7 @@ _logColor "$YELLOW" "$LOG_HEADER" "adding specific scripts to sudoers files"
 
 USERNAME=$(whoami)
 CUSTOM_SUDOERS="/etc/sudoers.d/tunarch-sddm"
-SUDOERS_ENTRY="$USERNAME aLL=(ALL) NOPASSWD: $RICE_DIR/dotfiles/$RICE/scripts/sddm-wallpaper.sh"
+SUDOERS_ENTRY="$USERNAME ALL=(root) NOPASSWD: $RICE_DIR/dotfiles/$RICE/scripts/sddm-wallpaper.sh"
 
 if [ ! -f "$CUSTOM_SUDOERS" ] || ! sudo grep -Fxq "$SUDOERS_ENTRY" "$CUSTOM_SUDOERS"; then
     echo "Adding sudoers rule to $CUSTOM_SUDOERS..."

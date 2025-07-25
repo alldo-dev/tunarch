@@ -48,7 +48,7 @@ fi
 
 # get or make cacheDir (from utils.sh)
 CACHE_DIR=$(_createCacheDir)
-echo $WALLPAPER > "$CACHE_DIR/current_wallpaper"
+echo $WALLPAPER >"$CACHE_DIR/current_wallpaper"
 
 _logColor "$GREEN" "LOG_HEADER" "changing wallpaper to $WALLPAPER"
 notify-send "changing wallpaper to $WALLPAPER"
