@@ -1,7 +1,15 @@
 #!/bin/sh
 
-source ~/.acr/utils.sh
-_logColor "$cyan" "$log_header" "The Following fonts will be installed"
+UTILS_FILE=/home/$(whoami)/.local/share/utils.sh 
+
+if [ ! -f "$UTILS_FILE" ]; then
+    echo -e "No utilities file (utils.sh) for tunarchy found under /home/$(whoami)/.local/share/"
+fi
+
+source "$UTILS_FILE" 
+
+
+_logColor "$CYAN" "$LOG_HEADER" "The Following fonts will be installed"
 echo -e "ttf-font-awesome"
 echo -e "ttf-firacode-nerd"
 
@@ -14,16 +22,16 @@ echo -e "ttf-firacode-nerd"
 # FIRA CODE
 yay -Sy --noconfirm --needed ttf-font-awesome ttf-firacode-nerd
 
-mkdir -p ~/.local/share/fonts
+mkdir -p /home/$(whoami)/.local/share/fonts
 
 if ! fc-list | grep -qi "FiraCode Nerd Font"; then
   cd /tmp
   wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip
   unzip FiraCode.zip -d FiraCodeFont
-  cp FiraCodeFont/FiraCodeNerdFont-Regular.ttf ~/.local/share/fonts
-  cp FiraCodeFont/FiraCodeNerdFont-Bold.ttf ~/.local/share/fonts
-  cp FiraCodeFont/FiracodeNerdFont-Italic.ttf ~/.local/share/fonts
-  cp FiraCodeFont/FiraCode-BoldItalic.ttf ~/.local/share/fonts
+  cp FiraCodeFont/FiraCodeNerdFont-Regular.ttf /home/$(whoami)/.local/share/fonts
+  cp FiraCodeFont/FiraCodeNerdFont-Bold.ttf /home/$(whoami)/.local/share/fonts
+  cp FiraCodeFont/FiracodeNerdFont-Italic.ttf /home/$(whoami)/.local/share/fonts
+  cp FiraCodeFont/FiraCode-BoldItalic.ttf /home/$(whoami)/.local/share/fonts
   rm -rf FiraCode.zip FiraCodeFont
   fc-cache
   cd -

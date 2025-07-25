@@ -1,14 +1,20 @@
 #!/bin/sh
 
-source ~/.acr/utils.sh
+UTILS_FILE=/home/$(whoami)/.local/share/utils.sh 
 
-_logColor "$cyan" "$log_header" "we need to add your user to the input group"
+if [ ! -f "$UTILS_FILE" ]; then
+    echo -e "No utilities file (utils.sh) for tunarchy found under /home/$(whoami)/.local/share/"
+fi
+
+source "$UTILS_FILE" 
+
+_logColor "$CYAN" "$LOG_HEADER" "we need to add your user to the input group"
 sudo usermod -a -G input $USER
 
-_logColor "$cyan" "$log_header" "copying dotfiles to $HOME/.config/"
+_logColor "$CYAN" "$LOG_HEADER" "copying dotfiles to /home/$(whoami)/.config/"
 
 # Copy the config files
-cp -R ~/.acr/dotfiles/* ~/.config/
+cp -R /home/$(whoami)/.local/share/tunarch/dotfiles/* /home/$(whoami)/.config/
 
-echo "source ~/.acr/dotfiles/.bashrc" >~/.bashrc
+echo "source /home/$(whoami)/.local/share/tunarch/dotfiles/.bashrc" >/home/$(whoami)/.bashrc
 

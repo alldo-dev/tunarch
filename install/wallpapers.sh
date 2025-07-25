@@ -1,15 +1,22 @@
 #!/bin/sh
 
-source "$HOME/.acr/utils.sh"
-wallpapers_dir="$HOME/wallpapers"
+UTILS_FILE=/home/$(whoami)/.local/share/utils.sh 
 
-_logColor "$cyan" "$log_header" "installing intial wallpapers"
+if [ ! -f "$UTILS_FILE" ]; then
+    echo -e "No utilities file (utils.sh) for tunarchy found under /home/$(whoami)/.local/share/"
+fi
 
-if [ ! -d "$wallpapers_dir" ]; then
-    _logColor "$yellow" "$log_header" "wallpaper directory does not exist under $wallpapers_dir, creating one..."
-    mkdir "$wallpapers_dir"
+source "$UTILS_FILE" 
+
+WALLPAPERS_DIR="/home/$(whoami)/wallpapers"
+
+_logColor "$CYAN" "$LOG_HEADER" "installing intial wallpapers"
+
+if [ ! -d "$WALLPAPERS_DIR" ]; then
+    _logColor "$YELLOW" "$LOG_HEADER" "wallpaper directory does not exist under $WALLPAPERS_DIR, creating one..."
+    mkdir "$WALLPAPERS_DIR"
 fi
 
 # Copy the config files
-_logColor "$cyan" "$log_header" "copying initial set of wallpapers to $wallpapers_dir"
-cp -R $HOME/.acr/wallpapers/* $wallpapers_dir
+_logColor "$CYAN" "$LOG_HEADER" "copying initial set of wallpapers to $WALLPAPERS_DIR"
+cp -R $RICE_DIR/wallpapers/* $WALLPAPERS_DIR

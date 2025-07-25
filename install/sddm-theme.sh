@@ -1,10 +1,16 @@
 #!/bin/bash
 
-sddm_theme_name="Sugar-Candy"
+SDDM_THEME_NAME="Sugar-Candy"
 
-source ~/.acr/utils.sh
+UTILS_FILE=/home/$(whoami)/.local/share/utils.sh 
 
-if [ -d /usr/share/sddm/themes/$sddm_theme_name ]; then
-    _logColor "$yellow" "sddm-theme" "configuring sddm theme to $sddm_theme_name"
-    sudo cp ~/.acr/sddm/sddm.conf /usr/lib/sddm/sddm.conf.d/default.conf
+if [ ! -f "$UTILS_FILE" ]; then
+    echo -e "No utilities file (utils.sh) for tunarchy found under /home/$(whoami)/.local/share/"
+fi
+
+source "$UTILS_FILE" 
+
+if [ -d /usr/share/sddm/themes/$SDDM_THEME_NAME]; then
+    _logColor "$YELLOW" "sddm-theme" "configuring sddm theme to $SDDM_THEME_NAME"
+    sudo cp $RICE_DIR/sddm/sddm.conf /usr/lib/sddm/sddm.conf.d/default.conf
 fi

@@ -26,7 +26,7 @@ EOF
 )
 
 RICE="tunarch"
-LOG_HEADER="${rice} installer"
+LOG_HEADER="${RICE} installer"
 REPO="alldo-dev/tunarch"
 USER="$(whoami)"
 DOWNLOAD_DIR="/home/$USER/.local/share/$RICE"
@@ -55,7 +55,7 @@ _logColor() {
         HEADER_COLOR="$1"
         HEADER="$2"
         HEADER_MSG="$3"
-        echo -e "${HEADER_COLOR}[${HEADER}] ${WHITE}${HEADER_MSG}"
+        echo -e "${HEADER_COLOR}[${HEADER}]${WHITE} ${HEADER_MSG}"
     fi
 }
 
@@ -146,25 +146,25 @@ _logColor "$CYAN" "$LOG_HEADER" "cloning ${REPO} to ${DOWNLOAD_DIR}"
 git clone "https://github.com/${REPO}.git" "${DOWNLOAD_DIR}" >/dev/null
 
 
-# _logColor "$CYAN" "$LOG_HEADER" "Installation starting..."
-#
-# # CREATE DOWNLOAD_DIR IF NO EXISTS
-# if [ ! -d $DOWNLOAD_DIR ]; then
-#     _logColor "$CYAN" "$LOG_HEADER" "creating directory in ${DOWNLOAD_DIR}"
-#     mkdir -p $DOWNLOAD_DIR
-# Else
-#     _logColor "$CYAN" "$LOG_HEADER" "directory ${DOWNLOAD_DIR} exists, continuing..."
-# fi
-#
-#
-# # INSTALL FROM INSTALL DIR
-# for f in $DOWNLOAD_DIR/install/*.sh; do
-#     _logColor "$CYAN" "$LOG_HEADER" "running installation for $f"
-#     source "$f"
-# done
-#
+_logColor "$CYAN" "$LOG_HEADER" "Installation starting..."
+
+# CREATE DOWNLOAD_DIR IF NO EXISTS
+if [ ! -d $DOWNLOAD_DIR ]; then
+    _logColor "$CYAN" "$LOG_HEADER" "creating directory in ${DOWNLOAD_DIR}"
+    mkdir -p $DOWNLOAD_DIR
+else
+    _logColor "$CYAN" "$LOG_HEADER" "directory ${DOWNLOAD_DIR} exists, continuing..."
+fi
+
+
+# INSTALL FROM INSTALL DIR
+for f in $DOWNLOAD_DIR/install/*.sh; do
+    _logColor "$CYAN" "$LOG_HEADER" "running installation for $f"
+    source "$f"
+done
+
 # # ENABLING ACR SCRIPT HELPERS
-# for s in $ACR_SCRIPTS_DIR/*.sh; do
+# for s in $SCRIPTS_DIR/*.sh; do
 #     _logColor "$CYAN" "$LOG_HEADER" "enabling utility script $s"
 #     sudo chmod +x $s
 # done

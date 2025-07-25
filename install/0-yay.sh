@@ -1,7 +1,14 @@
 #!/bin/sh
 
-source ~/.acr/utils.sh
-_logColor "$cyan" "$log_header" "making sure yay is installed..."
+UTILS_FILE=/home/$(whoami)/.local/share/utils.sh 
+
+if [ ! -f "$UTILS_FILE" ]; then
+    echo -e "No utilities file (utils.sh) for tunarchy found under /home/$(whoami)/.local/share/"
+fi
+
+source "$UTILS_FILE" 
+
+_logColor "$CYAN" "$LOG_HEADER" "making sure yay is installed..."
 
 sudo pacman -S --needed --noconfirm base-devel
 
