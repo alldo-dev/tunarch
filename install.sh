@@ -28,7 +28,7 @@ EOF
 RICE="tunarch"
 LOG_HEADER="${rice} installer"
 REPO="alldo-dev/tunarch"
-USER=$(whoami)
+USER=whoami
 DOWNLOAD_DIR="/home/$USER/.local/share/$RICE"
 ACR_SCRIPTS_DIR="$DOWNLOAD_DIR/dotfiles/acrarch/scripts"
 
