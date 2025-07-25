@@ -53,4 +53,4 @@ echo $WALLPAPER >"$CACHE_DIR/current_wallpaper"
 _logColor "$GREEN" "LOG_HEADER" "changing wallpaper to $WALLPAPER"
 notify-send "changing wallpaper to $WALLPAPER"
 
-sudo $RICE_DIR/dotfiles/acr/scripts/sddm-wallpaper.sh $(whoami)
+sudo $RICE_DIR/dotfiles/$RICE/scripts/sddm-wallpaper.sh $(whoami)
