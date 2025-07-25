@@ -4,31 +4,43 @@ clear
 #------------------------------------------------------------------------------
 # variable declaration
 #------------------------------------------------------------------------------
-ascii_art='                                                           █████     
-                                                          ░░███      
-  ██████    ██████  ████████   ██████   ████████   ██████  ░███████  
- ░░░░░███  ███░░███░░███░░███ ░░░░░███ ░░███░░███ ███░░███ ░███░░███ 
-  ███████ ░███ ░░░  ░███ ░░░   ███████  ░███ ░░░ ░███ ░░░  ░███ ░███ 
- ███░░███ ░███  ███ ░███      ███░░███  ░███     ░███  ███ ░███ ░███ 
-░░████████░░██████  █████    ░░████████ █████    ░░██████  ████ █████
- ░░░░░░░░  ░░░░░░  ░░░░░      ░░░░░░░░ ░░░░░      ░░░░░░  ░░░░ ░░░░░ '
 
+ASCII_ART=$(cat <<EOF
+┌─────────────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                         │
+│                                                                                         │
+│  sdSS_SSSSSSbs   .S       S.    .S_sSSs     .S_SSSs     .S_sSSs      sSSs   .S    S.    │
+│  YSSS~S%SSSSSP  .SS       SS.  .SS~YS%%b   .SS~SSSSS   .SS~YS%%b    d%%SP  .SS    SS.   │
+│       S%S       S%S       S%S  S%S   \`S%b  S%S   SSSS  S%S   \`S%b  d%S'    S%S    S%S   │
+│       S&S       S&S       S&S  S&S    S&S  S&S  SSS%S  S&S   .S*S  S&S     S&S  SSS&S   │
+│       S&S       S&S       S&S  S&S    S&S  S&S    S&S  S&S_sdSSS   S&S     S&S    S&S   │
+│       S*S       S*S.     .S*S  S*S    S*S  S*S    S*S  S*S    S%S  S*S.    S*S    S*S   │
+│       S*S        SSSbs_sdSSS   S*S    S*S  S*S    S*S  S*S    S&S   SSSbs  S*S    S*S   │
+│       S*S         YSSP~YSSY    S*S    SSS  SSS    S*S  S*S    SSS    YSSP  SSS    S*S   │
+│       SP                       SP                 SP   SP                         SP    │
+│       Y                        Y                  Y    Y                          Y     │
+│                                                                                         │
+│                                                                                         │
+└─────────────────────────────────────────────────────────────────────────────────────────┘
+EOF
+)
 
-rice="acr"
-log_header="${rice} installer"
-repo="alldo-dev/acr"
-download_dir="$HOME/.acr"
-acr_scripts_dir="$HOME/.acr/dotfiles/acr/scripts"
+RICE="acr"
+LOG_HEADER="${rice} installer"
+REPO="alldo-dev/acr"
+USER=$whoami
+DOWNLOAD_DIR="/home/$USER/.local/share/acrarch"
+ACR_SCRIPTS_DIR="$DOWNLOAD_DIR/dotfiles/acrarch/scripts"
 
 #terminal colors
-black="\u001b[30m"
-red="\u001b[31m"
-green="\u001b[32m"
-yellow="\u001b[33m"
-blue="\u001b[34m"
-magenta="\u001b[35m"
-cyan="\u001b[36m"
-white="\u001b[37m"
+BLACK="\u001b[30m"
+RED="\u001b[31m"
+GREEN="\u001b[32m"
+YELLOW="\u001b[33m"
+BLUE="\u001b[34m"
+MAGENTA="\u001b[35m"
+CYAN="\u001b[36m"
+WHITE="\u001b[37m"
 
 
 #------------------------------------------------------------------------------
@@ -40,10 +52,10 @@ _logColor() {
         echo "Usage: _logColor <header_color> <header> <header_message>"
         echo "Example: _logColor '\u001b[32m' '[_logColor]' 'my message'"
     else
-        header_color="$1"
-        header="$2"
-        header_msg="$3"
-        echo -e "${header_color}[${header}]${white}${header_msg}"
+        HEADER_COLOR="$1"
+        HEADER="$2"
+        HEADER_MSG="$3"
+        echo -e "${HEADER_COLOR}[${HEADER}] ${WHITE}${HEADER_MSG}"
     fi
 }
 
@@ -55,9 +67,9 @@ _isInstalled() {
     else
 	case $1 in
 	    pacman)
-	        package="$2"
-                check="$(sudo pacman -Qs --color always "${package}" | grep "local" | grep "${package} ")"
-                if [ -n "${check}" ]; then
+	        PACKAGE="$2"
+                CHECK="$(sudo pacman -Qs --color always "${PACKAGE}" | grep "local" | grep "${PACKAGE} ")"
+                if [ -n "${CHECK}" ]; then
                     echo 0 #'0' means 'true' in Bash
                     return #true
                 fi
@@ -92,7 +104,7 @@ _checkCommandExists() {
 #------------------------------------------------------------------------------
 # Script Start
 #------------------------------------------------------------------------------
-echo -e "\n$ascii_art\n"
+echo -e "\n$ASCII_ART\n"
 echo -e "Thank you for using aColdRice(ACR) - ArchLinux"
 echo -e "In order to set-up the customized desktop environment"
 echo -e "we need to make sure specific software is installed"
