@@ -163,7 +163,7 @@ for f in $RICE_DIR/install/*.sh; do
     source "$f"
 done
 
-# ENABLING ACR SCRIPT HELPERS
+# ENABLING TUNARCH SCRIPT HELPERS
 for s in $SCRIPTS_DIR/*.sh; do
     _logColor "$CYAN" "$LOG_HEADER" "enabling utility script $s"
     sudo chmod +x $s

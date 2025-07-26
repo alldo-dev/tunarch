@@ -15,7 +15,7 @@ sudo usermod -a -G input $USER
 _logColor "$CYAN" "$LOG_HEADER" "copying dotfiles to /home/$(whoami)/.config/"
 
 # Copy the config files
-cp -R /home/$(whoami)/.local/share/tunarch/dotfiles/* /home/$(whoami)/.config/
+cp -Rf /home/$(whoami)/.local/share/tunarch/dotfiles/* /home/$(whoami)/.config/
 
 echo "source /home/$(whoami)/.local/share/tunarch/dotfiles/.bashrc" >/home/$(whoami)/.bashrc
 
