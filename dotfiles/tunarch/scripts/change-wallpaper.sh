@@ -53,4 +53,10 @@ echo $WALLPAPER >"$CACHE_DIR/current_wallpaper"
 _logColor "$GREEN" "LOG_HEADER" "changing wallpaper to $WALLPAPER"
 notify-send "changing wallpaper to $WALLPAPER"
 
+
+# change SDDM wallpaper
 sudo $RICE_DIR/dotfiles/$RICE/scripts/sddm-wallpaper.sh $(whoami)
+
+# change hyprlock wallpaper
+HYPRLOCK_TPL="$RICE_DIR/templates/hyprlock.tpl"
+sed "s|<%PATH_TO_WALLPAPER%>|$WALLPAPER|g" "$HYPRLOCK_TPL" > "/home/$(whoami)/.config/hypr"
