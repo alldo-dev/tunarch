@@ -35,7 +35,7 @@ animations {
 
 background {
     monitor =
-    path = PATH_TO_WALLPAPER
+    path = <%PATH_TO_WALLPAPER%>
     blur_passes = 3
 }
 
