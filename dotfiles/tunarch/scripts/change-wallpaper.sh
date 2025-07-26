@@ -59,4 +59,4 @@ sudo $RICE_DIR/dotfiles/$RICE/scripts/sddm-wallpaper.sh $(whoami)
 
 # change hyprlock wallpaper
 HYPRLOCK_TPL="$RICE_DIR/templates/hyprlock.tpl"
-sed "s|<%PATH_TO_WALLPAPER%>|$WALLPAPER|g" "$HYPRLOCK_TPL" > "/home/$(whoami)/.config/hypr/hyprlock.conf"
+sed "s|<%PATH_TO_WALLPAPER%>|$WALLPAPER|g" "$HYPRLOCK_TPL" >"/home/$(whoami)/.config/hypr/hyprlock.conf"
