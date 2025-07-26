@@ -19,6 +19,7 @@ _logColor "$MAGENTA" "hyprland - must have" "qt5-wayland | qt functionality wrap
 _logColor "$MAGENTA" "hyprland - must have" "qt6-wayland | qt functionality wrapper for wayland"
 _logColor "$MAGENTA" "hyprland - must have" "hyrpland-qtutils | utility apps for dialogs and popups"
 _logColor "$MAGENTA" "hyprland - must have" "xdg-desktop-portal-gtk | lets other applications communicate with the compositor through D-Bus"
+_logColor "$MAGENTA" "hyprland - must have" "hyprlock| simple, yet fast, multi-threaded and GPU-accelerated screen lock for Hyprland"
 
 
 yay -S --noconfirm --needed \
@@ -31,7 +32,8 @@ yay -S --noconfirm --needed \
   qt5-wayland \
   qt6-wayland \
   xdg-desktop-portal-gtk \
-  hyprland-qtutils
+  hyprland-qtutils \
+  hyprlock
 
 # Start Hyprland on first session
 echo "[[ -z \$DISPLAY && \$(tty) == /dev/tty1 ]] && exec Hyprland" >/home/$(whoami)/.bash_profile
