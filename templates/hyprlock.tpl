@@ -9,7 +9,7 @@
 # you can get started by copying this config to ~/.config/hypr/hyprlock.conf
 #
 
-$font = FiraCode NerdFont
+$font = GohuFont 14 NerdFont
 
 general {
     hide_cursor = false
