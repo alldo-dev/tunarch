@@ -39,7 +39,7 @@ if ! fc-list | grep -qi "FiraCode Nerd Font"; then
   cd -
 fi
 
-if ! fc-list | grep -qi "GohuFont Nerd Font"; then
+if ! fc-list | grep -qi "GohuFont"; then
   cd /tmp
   wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Gohu.zip
   unzip Gohu.zip -d GohuFont
