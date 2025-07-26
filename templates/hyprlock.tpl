@@ -10,15 +10,18 @@
 #
 
 $font = GohuFont 14 NerdFont
+$WALLPAPER_FILE = <%PATH_TO_WALLPAPER%>
+$SCRIPTS = /home/$USER/.local/share/tunarch/dotfiles/tunarch/scripts
 
 general {
     hide_cursor = false
     ignore_empty_input = false
-    immediate_render = false
+    immediate_render = true
     text_trim = true
     fractional_scaling = 2
     screencopy_mode = 0 # 0-GPU accelerated 1-cpu based
     fail_timeout = 2000
+    grace = 1
 }
 
 # uncomment to enable fingerprint authentication
@@ -46,14 +49,14 @@ animations {
 # BACKGROUND
 background {
     monitor =
-    path = <%PATH_TO_WALLPAPER%>
-    color = rgba(17, 17, 17, 1.0)
+    path = $WALLPAPER_FILE
+    color = rgba(0, 0, 0, 1.0)
     blur_passes = 2
-    blur_size = 7
+    blur_size = 3
     noise = 0.0117
-    contrast = 0.8916
-    brightness = 0.8172
-    vibrancy = 0.1696
+    contrast = 1.3000 # 0.8916
+    brightness = 0.8000 # 0.8172
+    vibrancy = 0.2100 # 0.1696
     vibrancy_darkness = 0.0
     reload_time = -1
     #reload_cmd = ''
@@ -61,23 +64,24 @@ background {
     zindex = -1
 }
 
-# Profile-Photo
-# image {
-#     monitor =
-#     path = <%PATH_TO_PROFILE_IMG%> 
-#     size = 120
-#     rounding = -1
-#     border_size = 0
-#     border_color = 0xffdddddd
-#     rotate = 0
-#     reload_time = -1
-#     reload_cmd = 
-#     position = 0, -20
-#     halign = center
-#     valign = center
-#     zindex = 0
-# }
 
+image {
+    monitor =
+    path = $WALLPAPER_FILE
+    size = 160
+    rounding = -1
+    border_size = 0
+    border_color = 0xffdddddd
+    rotate = 0
+    reload_time = -1
+    reload_cmd = 
+    position = 0, 0
+    halign = center
+    valign = center
+    zindex = 0
+}
+
+# the input border
 shape {
     monitor =
     size = 360, 60
@@ -128,6 +132,18 @@ input-field {
     zindex = 0
 }
 
+# Keyboard LAYOUT
+label {
+    monitor =
+    text = $LAYOUT
+    color = rgba(254, 254, 254, 1.0)
+    font_size = 12
+    font_family = $font
+    position = 0, 80
+    halign = center
+    valign = bottom
+}
+
 # Time
 label {
     monitor =
@@ -135,19 +151,19 @@ label {
     color = rgba(216, 222, 233, 0.70)
     font_size = 130
     font_family = $font
-    position = 0, 240
+    position = 0, -130
     halign = center
-    valign = center
+    valign = top
 }
 
 # Day-Month-Date
 label {
     monitor =
-    text = cmd[update:1000] echo -e "$(date +"%A, %d %B")"
+    text = cmd[update:1000] echo -e "<b> "$(date +"%A, %d %B")" </b>"
     color = rgba(216, 222, 233, 0.70)
-    font_size = 30
+    font_size = 18
     font_family = $font
-    position = 0, 105
+    position = 0, -120
     halign = center
     valign = center
 }
@@ -156,11 +172,35 @@ label {
 # USER
 label {
     monitor =
-    text = $USER
+    text =   $USER
     color = rgba(216, 222, 233, 0.70)
-    font_size = 25
+    font_size = 24
     font_family = $font
-    position = 0, -130
+    position = 0, 280
     halign = center
-    valign = center
+    valign = bottom
+}
+
+# uptime
+label {
+    monitor =
+    text = cmd[update:60000] echo "<b> "$(uptime -p || $Scripts/UptimeNixOS.sh)" </b>"
+    color = rgba(216, 222, 233, 0.70)
+    font_size = 18
+    font_family = $font
+    position = 0, 0
+    halign = right
+    valign = bottom
+}
+
+battery information
+label {
+    monitor =
+    text = cmd[update:1000] echo "<b> "$($SCRIPTS/battery.sh)" </b>"
+    color = rgba(216, 222, 233, 0.70)
+    font_size = 18
+    font_family = $font
+    position = 0, 30
+    halign = right
+    valign = bottom
 }
