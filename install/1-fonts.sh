@@ -13,6 +13,7 @@ source "$UTILS_FILE"
 _logColor "$CYAN" "$LOG_HEADER" "The Following fonts will be installed"
 echo -e "ttf-font-awesome"
 echo -e "ttf-firacode-nerd"
+echo -e "ttf-gohu-nerd"
 
 #-------------------------------------------------------------------------------
 # FONTS INSTALLATION
@@ -34,6 +35,19 @@ if ! fc-list | grep -qi "FiraCode Nerd Font"; then
   cp FiraCodeFont/FiracodeNerdFont-Italic.ttf /home/$(whoami)/.local/share/fonts
   cp FiraCodeFont/FiraCode-BoldItalic.ttf /home/$(whoami)/.local/share/fonts
   rm -rf FiraCode.zip FiraCodeFont
+  fc-cache
+  cd -
+fi
+
+if ! fc-list | grep -qi "GohuFont Nerd Font"; then
+  cd /tmp
+  wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Gohu.zip
+  unzip Gohu.zip -d GohuFont
+  cp GohuFont/GohuFont11NerdFontMono-Regular.ttf /home/$(whoami)/.local/share/fonts
+  cp GohuFont/GohuFont11NerdFont-Regular.ttf /home/$(whoami)/.local/share/fonts
+  cp GohuFont/GohuFont14NerdFontMono-Regular.ttf /home/$(whoami)/.local/share/fonts
+  cp GohuFont/GohuFont14NerdFont-Regular.ttf /home/$(whoami)/.local/share/fonts
+  rm -rf GohuFont.zip GohuFont
   fc-cache
   cd -
 fi
