@@ -9,13 +9,12 @@ fi
 
 source "$UTILS_FILE" 
 
+HEADER="clitools"
 
-_logColor "$MAGENTA" "extras" "extra tools and software"
-_logColor "$MAGENTA" "extras" "btop | resources monitor in the terminal"
-_logColor "$MAGENTA" "extras" "unzip | decompression tool"
+_logColor "$MAGENTA" "$HEADER" "extra tools and software"
+_logColor "$MAGENTA" "$HEADER" "unzip | decompression tool"
 
 
 yay -S --noconfirm  \
-  btop \
   unzip
   
