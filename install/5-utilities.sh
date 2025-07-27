@@ -20,6 +20,7 @@ _logColor "$MAGENTA" "utilities" "pavucontrol| audio volume control"
 _logColor "$MAGENTA" "utilities" "libnotify| notification library"
 _logColor "$MAGENTA" "utilities" "inotify-tools | interface for inotify used by various other tools"
 _logColor "$MAGENTA" "utilities" "swww | wayland wallpaper service"
+_logColor "$MAGENTA" "utilities" "matugen-bin | material color generation tool"
 
 yay -S --noconfirm --needed \
   rofi \
@@ -29,4 +30,5 @@ yay -S --noconfirm --needed \
   pavucontrol \
   libnotify \
   inotify-tools \
-  swww
+  swww \
+  matugen-bin

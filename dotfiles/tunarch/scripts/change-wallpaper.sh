@@ -55,7 +55,8 @@ _logColor "$GREEN" "LOG_HEADER" "changing wallpaper to $WALLPAPER"
 notify-send "changing wallpaper to $WALLPAPER"
 
 # change swww wallpaper
-swww img $WALLPAPER --transition-type random
+# swww img $WALLPAPER --transition-type random
+matugen image $WALLPAPER
 
 # change SDDM wallpaper
 sudo $RICE_DIR/dotfiles/$RICE/scripts/sddm-wallpaper.sh $(whoami)
