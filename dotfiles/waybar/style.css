@@ -9,17 +9,17 @@
 }
 
 window#waybar {
-    background: transparent;
-    border: 2px solid #fcfcce;
+    background: @surface;
+    border: 2px solid @invert_surface;
     border-radius: 4px;
-    color: #fcfcce;
+    color: @primary;
 }
 
 tooltip {
-    background-color: #101010;
-    border: 2px solid #fcfcce;
+    background-color: @surface;
+    border: 2px solid @invert_surface;
     font-size: 2px;
-	color: #fcfcce;
+    color: @primary;
 }
 
 tooltip label {
@@ -41,9 +41,9 @@ tooltip label {
     margin: 6px 6px 6px 0px;
     padding: 2px 8px;
     border-radius: 4px;
-    background-color: #101010;
-    border: 2px solid #fcfcce;
-    color: #fcfcce;
+    background-color: @surface;
+    border: 2px solid @invert_surface;
+    color: @primary;
 
 }
 
@@ -64,28 +64,28 @@ tooltip label {
     min-width: 0;
     box-shadow: inset 0 -3px transparent;
     padding: 2px 4px;
-    color: #fcfcce;
-    background-color: #120F19;
-    border: 2px solid #fcfcce;
+    color: @primary;
+    background-color: @surface;
+    border: 2px solid @invert_surface;
     border-radius: 4px;
     margin-right: 2px;
 }
 
 #workspaces button.active {
-    color: #000000;
-    background-color: #fcfcce;
+    color: @surface;
+    background-color: @primary;
 }
 
 #workspaces button.urgent {
-    background-color: #cccc7c;
+    background-color: @on_tertiary_container;
     color: #000000;
-    border: 2px solid #cccc7c;
+    border: 2px solid @tertiary_container;
 }
 
 #clock {
-    background-color: #fcfcce;
-    border: 2px solid #120F19;
-    color: #000000;
+    background-color: @surface;
+    border: 2px solid @invert_surface;
+    color: @primary;
 }
 
 #cpu,
@@ -98,13 +98,13 @@ tooltip label {
 #cpu.critical,
 #memory.critical {
     color: #cccc7c;
-    border: 2px solid #cccc7c;
+    border: 2px solid @on_error_containerr;
 }
 
 #battery.warning,
 #battery.critical,
 #battery.urgent {
     color: #cccc7c;
-    border: 2px solid #cccc7c;
+    border: 2px solid @on_tertiary_container;
 }
 
