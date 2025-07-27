@@ -29,3 +29,8 @@ input_path = './templates/hyprland-colors.conf'
 output_path = '~/.config/hypr/colors.conf'
 post_hook = 'hyprctl reload'
 
+[templates.kitty]
+input_path = './templates/kitty-colors.conf'
+output_path = '~/.config/kitty/theme/tunarch.conf'
+post_hook = "kitty +kitten themes --reload-in=all tunarch"
+
