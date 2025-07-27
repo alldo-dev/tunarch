@@ -33,7 +33,8 @@ yay -S --noconfirm --needed \
   qt6-wayland \
   xdg-desktop-portal-gtk \
   hyprland-qtutils \
-  hyprlock
+  hyprlock \
+  hypridle
 
 # Start Hyprland on first session
 echo "[[ -z \$DISPLAY && \$(tty) == /dev/tty1 ]] && exec Hyprland" >/home/$(whoami)/.bash_profile
