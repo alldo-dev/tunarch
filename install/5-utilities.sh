@@ -19,6 +19,7 @@ _logColor "$MAGENTA" "utilities" "cliphist | wayland clipboard manager with mult
 _logColor "$MAGENTA" "utilities" "pavucontrol| audio volume control"
 _logColor "$MAGENTA" "utilities" "libnotify| notification library"
 _logColor "$MAGENTA" "utilities" "inotify-tools | interface for inotify used by various other tools"
+_logColor "$MAGENTA" "utilities" "swww | wayland wallpaper service"
 
 yay -S --noconfirm --needed \
   rofi \
@@ -27,4 +28,5 @@ yay -S --noconfirm --needed \
   cliphist \
   pavucontrol \
   libnotify \
-  inotify-tools
+  inotify-tools \
+  swww
