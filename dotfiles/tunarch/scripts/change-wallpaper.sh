@@ -56,6 +56,7 @@ notify-send "changing wallpaper to $WALLPAPER"
 
 # change swww wallpaper
 # swww img $WALLPAPER --transition-type random
+# swww clear
 matugen image "$WALLPAPER"
 
 # change SDDM wallpaper

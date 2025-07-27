@@ -10,7 +10,7 @@ command = "swww"
 # The arguments that will be provided to the command.
 # Keywords like {{ mode }} or anything that works inside of hooks doesn't work here.
 # The last argument will be the image path.
-arguments = ["img", "--transition-type", "random"]
+arguments = ["img", "--transition-type", "wave", "--transition-step", "255"]
 
 # For example, killing the wallpaper daemon. Usage is like a normal hook.
 # pre_hook = ""
@@ -23,3 +23,9 @@ set = true
 input_path = './templates/colors.css'
 output_path = '~/.config/waybar/colors.css'
 post_hook = 'pkill -SIGUSR2 waybar'
+
+[templates.hyprland]
+input_path = './templates/hyprland-colors.conf'
+output_path = '~/.config/hypr/colors.conf'
+post_hook = 'hyprctl reload'
+
