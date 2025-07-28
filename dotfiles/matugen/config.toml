@@ -39,8 +39,6 @@ post_hook = "kitty +kitten themes --reload-in=all tunarch"
 input_path = './templates/rofi-colors.rasi'
 output_path = '~/.config/rofi/colors.rasi'
 
-[config]
-
 [templates.dunst]
 input_path = './templates/dunstrc-colors'
 output_path = '~/.config/dunst/dunstrc'
