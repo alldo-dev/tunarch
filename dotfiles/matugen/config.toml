@@ -34,3 +34,18 @@ input_path = './templates/kitty-colors.conf'
 output_path = '~/.config/kitty/theme/tunarch.conf'
 post_hook = "kitty +kitten themes --reload-in=all tunarch"
 
+
+[templates.rofi]
+input_path = './templates/rofi-colors.rasi'
+output_path = '~/.config/rofi/colors.rasi'
+
+[config]
+
+[templates.dunst]
+input_path = './templates/dunstrc-colors'
+output_path = '~/.config/dunst/dunstrc'
+post_hook = 'pkill -SIGUSR2 dunst
+
+[templates.btop]
+input_path = './templates/btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'

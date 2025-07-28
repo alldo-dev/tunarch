@@ -3,6 +3,8 @@
 /* https://davatorium.github.io/rofi/current/rofi-theme.5                     */
 /*----------------------------------------------------------------------------*/
 
+@imports "colors.rasi"
+
 * {
     selected:  rgba ( 255, 255, 255, 100 % );
     selected-normal-foreground:  rgba ( 255, 255, 255, 100 % );
