@@ -1,27 +1,25 @@
-@import '../../.config/waybar/colors.css';
+@import '../waybar/colors.css';
 
 * {
 	background-image: none;
 	box-shadow: none;
+	font-family: "GohuFont 14 NerdFont", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
 }
 
 window {
 	font-size:24px;
-	color: @primary
-	background-color: @background
+	color: @primary;
+	background-color: @background;
 }
 
 button {
     border-radius: 0;
-    border-color: @inverse_surface;
+    border-color: transparent;
     text-decoration-color: @inverse_surface;
     color: @primary;
     animation: gradient_f 10s ease-in infinite;
     transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
     background-color: @background;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 80px;
     outline-style: none;
     background-repeat: no-repeat;
     background-position: center;
@@ -29,19 +27,16 @@ button {
 }
 
 button:focus {
-	background-size: 50%;
-	border: 0px;
+	background-size: 40%;
 	outline-style: none;
 }
 
 button:active, button:hover {
 	/* background-color: @inverse_primary; */
 	/* outline-style: none; */
-    background-color: transparent; 
-    color: @color13;
-    background-size: 50%;
-    margin: 30px;
-    border-radius: 80px;
+    color: @primary;
+    background-size: 40%;
+    margin: 20px;
     outline-style: none;
 }
 
@@ -52,7 +47,7 @@ button span {
 
 
 #lock {
-    background-image: image(url("./icons/lock.png")));
+    background-image: image(url("./icons/lock.png"));
 }
 
 #logout {
