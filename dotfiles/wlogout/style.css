@@ -1,0 +1,76 @@
+@import '../../.config/waybar/colors.css';
+
+* {
+	background-image: none;
+	box-shadow: none;
+}
+
+window {
+	font-size:24px;
+	color: @primary
+	background-color: @background
+}
+
+button {
+    border-radius: 0;
+    border-color: @inverse_surface;
+    text-decoration-color: @inverse_surface;
+    color: @primary;
+    animation: gradient_f 10s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    background-color: @background;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 80px;
+    outline-style: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20%;
+}
+
+button:focus {
+	background-size: 50%;
+	border: 0px;
+	outline-style: none;
+}
+
+button:active, button:hover {
+	/* background-color: @inverse_primary; */
+	/* outline-style: none; */
+    background-color: transparent; 
+    color: @color13;
+    background-size: 50%;
+    margin: 30px;
+    border-radius: 80px;
+    outline-style: none;
+}
+
+/* Adjust the size of the icon or content inside the button */
+button span {
+    font-size: 1.2em; /* Increase the font size */
+}
+
+
+#lock {
+    background-image: image(url("./icons/lock.png")));
+}
+
+#logout {
+    background-image: image(url("./icons/logout.png"));
+}
+
+#suspend {
+    background-image: image(url("./icons/suspend.png"));
+}
+
+#hibernate {
+    background-image: image(url("./icons/hibernate.png"));
+}
+
+#shutdown {
+    background-image: image(url("./icons/shutdown.png"));
+}
+
+#reboot {
+    background-image: image(url("./icons/reboot.png"));
+}

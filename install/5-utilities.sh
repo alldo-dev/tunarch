@@ -21,6 +21,7 @@ _logColor "$MAGENTA" "utilities" "libnotify| notification library"
 _logColor "$MAGENTA" "utilities" "inotify-tools | interface for inotify used by various other tools"
 _logColor "$MAGENTA" "utilities" "swww | wayland wallpaper service"
 _logColor "$MAGENTA" "utilities" "matugen-bin | material color generation tool"
+_logColor "$MAGENTA" "utilities" "wlogout | wayland based logout menu"
 
 yay -S --noconfirm --needed \
   rofi \
@@ -31,4 +32,5 @@ yay -S --noconfirm --needed \
   libnotify \
   inotify-tools \
   swww \
-  matugen-bin
+  matugen-bin \
+  wlogout
