@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [ $# -ne 2 ];then
+    echo "Usage: wlogout-helper <command>"
+    echo "Commands: 'lock' | 'logout' | 'reboot' | 'suspend' | 'hibernate' |  'shutdown'"
+    echo "Example: wlogout-helper logout"
+
+fi
+
 terminate_clients() {
   TIMEOUT=5
   # Get a list of all client PIDs in the current Hyprland session
@@ -31,8 +38,8 @@ terminate_clients() {
   done
 }
 
-if [[ "$1" == "exit" ]]; then
-  echo ":: Exit"
+if [[ "$1" == "logout" ]]; then
+  echo "Logging out..."
   terminate_clients
   sleep 0.5
   hyprctl dispatch exit
@@ -40,33 +47,33 @@ if [[ "$1" == "exit" ]]; then
 fi
 
 if [[ "$1" == "lock" ]]; then
-  echo ":: Lock"
+  echo "Locking the system..."
   sleep 0.5
   hyprlock
 fi
 
 if [[ "$1" == "reboot" ]]; then
-  echo ":: Reboot"
+  echo "Rebooting..."
   terminate_clients
   sleep 0.5
   systemctl reboot
 fi
 
 if [[ "$1" == "shutdown" ]]; then
-  echo ":: Shutdown"
+  echo "Shooting down the system..."
   terminate_clients
   sleep 0.5
   systemctl poweroff
 fi
 
 if [[ "$1" == "suspend" ]]; then
-  echo ":: Suspend"
+  echo "Suspending the system..."
   sleep 0.5
   systemctl suspend
 fi
 
 if [[ "$1" == "hibernate" ]]; then
-  echo ":: Hibernate"
+  echo "Hibernating the system..."
   sleep 1
   systemctl hibernate
 fi

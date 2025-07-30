@@ -6,25 +6,25 @@
 }
 {
     "label" : "logout",
-    "action" : "loginctl terminate-user $USER",
+    "action" : "/home/$USER/.local/share/tunarch/wlogout-helper.sh logout",
     "text" : "[L]ogout",
     "keybind" : "L"
 }
 {
     "label" : "shutdown",
-    "action" : "systemctl poweroff",
+    "action" : "/home/$USER/.local/share/tunarch/wlogout-helper.sh shutdown",
     "text" : "[s]hutdown",
     "keybind" : "s"
 }
 {
     "label" : "suspend",
-    "action" : "systemctl suspend",
+    "action" : "/home/$USER/.local/share/tunarch/wlogout-helper.sh suspend",
     "text" : "s[u]spend",
     "keybind" : "u"
 }
 {
     "label" : "reboot",
-    "action" : "systemctl reboot",
+    "action" : "/home/$USER/.local/share/tunarch/wlogout-helper.sh reboot",
     "text" : "[r]eboot",
     "keybind" : "r"
 }
