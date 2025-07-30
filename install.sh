@@ -112,7 +112,7 @@ catch_errors() {
 trap catch_errors ERR
 
 echo -e "\n$ASCII_ART\n"
-echo -e "Thank you for using aColdRice(ACR) - ArchLinux"
+echo -e "Thank you for using (acold)TunArch - ArchLinux"
 echo -e "In order to set-up the customized desktop environment"
 echo -e "we need to make sure specific software is installed"
 echo -e "the installer needs super-user (sudo) permission to"
