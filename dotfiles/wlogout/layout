@@ -1,6 +1,6 @@
 {
     "label" : "lock",
-    "action" : "loginctl lock-session",
+    "action" : "/home/$USER/.local/share/tunarch/wlogout-helper.sh lock"
     "text" : "[l]ock",
     "keybind" : "l"
 }

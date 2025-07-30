@@ -13,8 +13,12 @@ HEADER="clitools"
 
 _logColor "$MAGENTA" "$HEADER" "extra tools and software"
 _logColor "$MAGENTA" "$HEADER" "unzip | decompression tool"
+_logColor "$MAGENTA" "$HEADER" "jq | command line json processor"
+_logColor "$MAGENTA" "$HEADER" "man-db | unix documentation system"
 
 
 yay -S --noconfirm  \
-  unzip
+  unzip \
+  jq \
+  man-db
   
