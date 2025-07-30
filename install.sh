@@ -30,7 +30,7 @@ LOG_HEADER="${RICE} installer"
 REPO="alldo-dev/tunarch"
 USER="$(whoami)"
 RICE_DIR="/home/$USER/.local/share/$RICE"
-SCRIPTS_DIR="$RICE_DIR/dotfiles/$RICE/scripts"
+SCRIPTS_DIR="home/$USER/.config/$RICE/scripts"
 
 #terminal colors
 BLACK="\u001b[30m"
