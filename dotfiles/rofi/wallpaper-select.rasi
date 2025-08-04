@@ -1,69 +1,165 @@
 /* ---- Configuration ---- */
 @theme "~/.config/rofi/config.rasi"
 
-/* ---- Configuration ---- */ 
 configuration {
-  modi: "drun";
+    modi:                        "drun";
+    show-icons:                  true;
+    drun-display-format:         "{name}";    
+	hover-select:				 true;
 }
+
+//----- Global Properties -----//
+
+//----- Main Window -----//
 
 window {
-  width: 75%;
-  height: 80%;
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       80%;
+    height:                      60%;
+    spacing:                     0px;
+    padding:                     0px;
+    border:                      0px;
+    border-radius:               30px 5px 30px 5px;
+    cursor:			 "default";
+    background-color:            @surface;
 }
 
-/* ---- Mainbox ---- */
+//----- Main Box -----//
+
 mainbox {
-  children: [ "inputbar", "listview"];
+    children:                    [ "listview", "inputbar" ];
+    background-color:            transparent;
+	border: 		 2px;
+	border-radius:		 inherit;
+	border-color: 		 @primary;
+}
+
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     30px 60px;
+    background-color:            transparent;
+    text-color:                  @primary;
+    border-radius: 		 15px 5px 15px 5px;
+    orientation:                 horizontal;
+    children:                    [ "dummy", "textbox-prompt-colon", "entry", "entry-counter", "dummy" ];
+}
+
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "󰸉 ";
+    padding:                     10px 15px;
+    border-radius:               15px 5px 15px 5px;
+    background-color:            @surface;
+    text-color:                  inherit;
 }
 
 entry {
-  expand: true;
-  placeholder: " 🎞️ Search / Choose Wallpaper";
-  horizontal-align: 0.5;
-  horizontal-align: 0.5;
+    enabled:                     true;
+    expand:                      false;
+    width:                       300px;
+    padding:                     12px 16px;
+    border-radius:               5px 15px 5px 15px;
+    background-color:            @surface;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "Search Wallpaper";
+    placeholder-color:           @primary;
 }
 
-/* ---- Listview ---- */
+dummy {
+    expand:                      true;
+    background-color:            transparent;
+}
+
+entry-counter {
+    enabled: 			 true; 
+    expand:                      false;
+    orientation:		 horizontal;	
+    padding:                     12px 16px;
+    border-radius:               15px 5px 15px 5px;
+    background-color:            @surface;
+    text-color:                  inherit;
+    children:			 [ num-filtered-rows, textbox-divider, num-rows ];
+}
+
+#num-filtered-rows {
+    enabled:			 true;	
+    text-color:			 inherit;
+}
+
+#textbox-divider {
+    enabled:			 true;
+    text-color:			 inherit;
+    background-color:            @surface;
+    str:			 "/";
+}
+
+#num-rows {
+    enabled:			 true;
+    text-color:			 inherit;
+}
+
+//----- Listview -----//
+
 listview {
-  columns: 3;
-  lines: 10;
-  spacing: 2px;
-  padding: 0px;
-  flow: horizontal;
-  fixed-width: true;
-  fixed-height: true;
-  cycle: true;
-  border: 0px solid;
+    enabled:                     true;
+    columns:                     6;
+    lines:                       1;
+    spacing:                     30px;
+    padding:                     20px 30px;
+    cycle:                       true;
+    dynamic:                     false;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     true;
+    fixed-height:                true;
+    fixed-columns:               true;
+    border-color:                transparent;
+    cursor:                      "default";
+    background-color:            transparent;
+    text-color:                  @primary;
 }
 
-/* ---- Element ---- */
+//----- Elements -----//
+
 element {
-  orientation: vertical;
-  children: [ element-icon, element-text ];
-  spacing: 0px;
-  padding: 0px;
-  margin: 5px;
+    enabled:                     true;
+    orientation:                 vertical;
+    spacing:                     0px;
+    padding:                     0px;
+    border-radius:               10px;
+    cursor:                      pointer;
+    background-color:            @surface;
+    border:			 2px;
+    border-color:		 @primary;
+    text-color:                  @primary;
 }
 
 element selected.normal {
-  background-color: transparent;
+    background-color:            @surface-container;
+    text-color:                  @primary;
 }
 
 element-icon {
-    text-color:                  inherit;
-    size:                        15em;
-    margin:                      0;
+    size:                        33%;
     cursor:                      inherit;
-    border: 2px solid;
-    border-color: @invert-surface;
-    border-radius: 10px;
-    padding: -4em -4em;
+    padding:                     0px;
+    margin:                      0px;
+    border-radius:               0px;
+    background-color:            transparent;
+    text-color:                  inherit;
 }
 
 element-text {
-  vertical-align: 0.5;
-  horizontal-align: 0.5;
-  padding: 0px;
-  margin: 0px;
-  border-radius: 10px;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    padding:                     10px;
+    cursor:                      inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
 }
