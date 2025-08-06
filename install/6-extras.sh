@@ -12,10 +12,11 @@ source "$UTILS_FILE"
 
 _logColor "$MAGENTA" "extras" "extra tools and software"
 _logColor "$MAGENTA" "extras" "btop | resources monitor in the terminal"
-_logColor "$MAGENTA" "extras" "unzip | decompression tool"
+_logColor "$MAGENTA" "extras" "mpv | media player"
 
 
 yay -S --noconfirm  \
   btop \
-  unzip
+  unzip \
+  mpv
   
