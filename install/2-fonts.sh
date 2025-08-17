@@ -1,19 +1,19 @@
 #!/bin/sh
 
-UTILS_FILE=/home/$(whoami)/.local/share/tunarch/utils.sh 
+UTILS_FILE=/home/$(whoami)/.local/share/tunarch/utils.sh
 
 if [ ! -f "$UTILS_FILE" ]; then
-    echo -e "No utilities file (utils.sh) for tunarchy found under /home/$(whoami)/.local/share/"
-    exit 1
+  echo -e "No utilities file (utils.sh) for tunarchy found under /home/$(whoami)/.local/share/"
+  exit 1
 fi
 
-source "$UTILS_FILE" 
-
+source "$UTILS_FILE"
 
 _logColor "$CYAN" "$LOG_HEADER" "The Following fonts will be installed"
 echo -e "ttf-font-awesome"
 echo -e "ttf-firacode-nerd"
 echo -e "ttf-gohu-nerd"
+echo -e "noto-fonts-emoji"
 
 #-------------------------------------------------------------------------------
 # FONTS INSTALLATION
@@ -22,7 +22,10 @@ echo -e "ttf-gohu-nerd"
 # https://archlinux.org/groups/x86_64/nerd-fonts/
 
 # FIRA CODE
-yay -Sy --noconfirm --needed ttf-font-awesome ttf-firacode-nerd
+yay -Sy --noconfirm --needed \
+  ttf-font-awesome \
+  ttf-firacode-nerd \
+  noto-fonts-emoji
 
 mkdir -p /home/$(whoami)/.local/share/fonts
 
@@ -51,4 +54,3 @@ if ! fc-list | grep -qi "GohuFont"; then
   fc-cache
   cd -
 fi
-
